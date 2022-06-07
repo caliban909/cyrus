@@ -1,11 +1,17 @@
-h1 {
+.header {
   margin: auto;
   text-align: center;
   margin-bottom: 3%;
-  color: #202124;
   background: rgba(248, 248, 255, 0.5);
   width: 90%;
   font-size: 300%;
+}
+
+.header span {
+  background: #202124;
+  color: ghostwhite;
+  margin: auto;
+  padding: 0.2rem;
 }
 
 .lpcontainer {
