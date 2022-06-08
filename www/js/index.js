@@ -12,6 +12,7 @@ const DelButtons = document.querySelectorAll(".lower");
 const CoinButton = document.querySelector(".coin");
 const DieButton = document.querySelector(".die");
 const TimeButton = document.querySelector(".time");
+const ResetButton = document.querySelector(".reset");
 
 //lifepoints for player (p) 1 and 2
 let player1 = 8000;
@@ -57,13 +58,28 @@ function cointoss() {
 }
 
 function dieroll() {
-  let outcome = Math.floor(Math.random() * 6) + 1;
-  alert("the outcome is: " + outcome);
+  let outcomes = [];
+  let number = parseFloat(prompt("How many dice? (1-3)"));
+  if (number > 3) {
+    alert("Not a valid input");
+    return;
+  }
+  for (let i = 0; i < number; i++) {
+    let outcome = Math.floor(Math.random() * 6) + 1;
+    outcomes.push(outcome);
+  }
+  alert("result: " + outcomes);
 }
 
 function stopwatch() {
   let number = parseFloat(prompt("How many seconds?"));
   window.setTimeout(() => alert("Time's up"), number * 1000);
+}
+
+function reset() {
+  player1 = 8000;
+  player2 = 8000;
+  lpupdate();
 }
 
 //eventlistener
@@ -74,6 +90,7 @@ DelButtons[1].addEventListener("click", () => dellp(2));
 CoinButton.addEventListener("click", cointoss);
 DieButton.addEventListener("click", dieroll);
 TimeButton.addEventListener("click", stopwatch);
+ResetButton.addEventListener("click", reset);
 
 //start
 lpupdate();
