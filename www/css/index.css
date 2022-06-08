@@ -1,3 +1,8 @@
+.app {
+  background-image: url(../img/background.png);
+  padding: 0.4%;
+}
+
 .header {
   margin: auto;
   text-align: center;
@@ -11,7 +16,8 @@
   background: #202124;
   color: ghostwhite;
   margin: auto;
-  padding: 0.2rem;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 
 .lpcontainer {
