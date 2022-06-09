@@ -1,12 +1,11 @@
-// Wait for the deviceready event before using any of Cordova's device APIs.
-// See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
+// Cyrus Klon Script - created by M.Lindner
 
 //Variables
 
 //html elements
 const Player1lp = document.querySelector(".player1lp");
 const Player2lp = document.querySelector(".player2lp");
-//buttons
+//html buttons
 const AddButtons = document.querySelectorAll(".upper");
 const DelButtons = document.querySelectorAll(".lower");
 const CoinButton = document.querySelector(".coin");
@@ -14,18 +13,20 @@ const DieButton = document.querySelector(".die");
 const TimeButton = document.querySelector(".time");
 const ResetButton = document.querySelector(".reset");
 
-//lifepoints for player (p) 1 and 2
+//lifepoints for player 1 and 2
 let player1 = 8000;
 let player2 = 8000;
 
 //functions
 
+//updates shown lifepoints
 function lpupdate() {
   console.log("calculating lifepoints");
   Player1lp.innerHTML = player1;
   Player2lp.innerHTML = player2;
 }
 
+//adds lifepoints to chosen player
 function addlp(player) {
   number = parseInt(prompt("How many Lifepoints?"));
   if (player == 1) {
@@ -37,6 +38,7 @@ function addlp(player) {
   console.log(number + " lifepoints added to player" + player + "'s total");
 }
 
+//removes lifepoints from chosen player
 function dellp(player) {
   number = parseInt(prompt("How many Lifepoints?"));
   if (player == 1) {
@@ -48,9 +50,11 @@ function dellp(player) {
   console.log(number + " lifepoints removed from Player" + player + "'s total");
 }
 
+//tosses 1-3 coins and returns their outcome
 function cointoss() {
   let outcomes = [];
   let number = parseFloat(prompt("How many coins? (1-3)"));
+  //check for valid input
   if (number > 3) {
     alert("Not a valid input");
     return;
@@ -68,9 +72,11 @@ function cointoss() {
   alert("result: " + outcomes);
 }
 
+//rolls 1-3 dice and returns the outcome
 function dieroll() {
   let outcomes = [];
   let number = parseFloat(prompt("How many dice? (1-3)"));
+  //check for valid input
   if (number > 3) {
     alert("Not a valid input");
     return;
@@ -83,12 +89,14 @@ function dieroll() {
   alert("result: " + outcomes);
 }
 
+//sets a timer for the chosen amount of seconds
 function stopwatch() {
   let number = parseFloat(prompt("How many seconds?"));
   window.setTimeout(() => alert("Time's up"), number * 1000);
   console.log("Timer has been set for " + number + " seconds");
 }
 
+//resets lifepoints of both players
 function reset() {
   console.log("lifepoints will be reset");
   player1 = 8000;
@@ -96,7 +104,7 @@ function reset() {
   lpupdate();
 }
 
-//eventlistener
+//event listener
 AddButtons[0].addEventListener("click", () => addlp(1));
 AddButtons[1].addEventListener("click", () => addlp(2));
 DelButtons[0].addEventListener("click", () => dellp(1));
@@ -106,5 +114,5 @@ DieButton.addEventListener("click", dieroll);
 TimeButton.addEventListener("click", stopwatch);
 ResetButton.addEventListener("click", reset);
 
-//start
+//start - initialising lifepoints
 lpupdate();
