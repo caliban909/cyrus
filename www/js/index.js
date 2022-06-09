@@ -34,7 +34,7 @@ function addlp(player) {
     player2 += number;
   }
   lpupdate();
-  console.log("lifepoints added to player" + player + "'s total");
+  console.log(number + " lifepoints added to player" + player + "'s total");
 }
 
 function dellp(player) {
@@ -45,16 +45,27 @@ function dellp(player) {
     player2 -= number;
   }
   lpupdate();
-  console.log("lifepoints removed from Player" + player + "'s total");
+  console.log(number + " lifepoints removed from Player" + player + "'s total");
 }
 
 function cointoss() {
-  let outcome = Math.floor(Math.random() * 2);
-  if (outcome == 0) {
-    alert("the outcome is: Heads");
-  } else {
-    alert("the outcome is: Tails");
+  let outcomes = [];
+  let number = parseFloat(prompt("How many coins? (1-3)"));
+  if (number > 3) {
+    alert("Not a valid input");
+    return;
   }
+  for (let i = 0; i < number; i++) {
+    let outcome = Math.floor(Math.random() * 2);
+    if (outcome == 0) {
+      outcome = "Heads";
+    } else {
+      outcome = "Tails";
+    }
+    outcomes.push(outcome);
+    console.log("coin has been tossed");
+  }
+  alert("result: " + outcomes);
 }
 
 function dieroll() {
@@ -67,6 +78,7 @@ function dieroll() {
   for (let i = 0; i < number; i++) {
     let outcome = Math.floor(Math.random() * 6) + 1;
     outcomes.push(outcome);
+    console.log("a die has been rolled");
   }
   alert("result: " + outcomes);
 }
@@ -74,9 +86,11 @@ function dieroll() {
 function stopwatch() {
   let number = parseFloat(prompt("How many seconds?"));
   window.setTimeout(() => alert("Time's up"), number * 1000);
+  console.log("Timer has been set for " + number + " seconds");
 }
 
 function reset() {
+  console.log("lifepoints will be reset");
   player1 = 8000;
   player2 = 8000;
   lpupdate();
